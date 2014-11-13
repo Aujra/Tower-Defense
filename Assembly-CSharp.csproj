@@ -46,13 +46,51 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Benchy\BenchyProfiler\BenchyProfiler.cs" />
+     <Compile Include="Assets\Benchy\BenchyProfiler\NeverProfileMethod.cs" />
+     <Compile Include="Assets\Benchy\Scripts\BenchyBenchmarkWidget.cs" />
+     <Compile Include="Assets\Benchy\Scripts\BenchyExportPathWidget.cs" />
+     <Compile Include="Assets\Benchy\Scripts\BenchyOnDeviceWidget.cs" />
+     <Compile Include="Assets\Benchy\Scripts\BenchyOverviewWidget.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\BaseClassExample.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\BaseClassExampleMethodOverridingA.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\BaseClassExampleMethodOverridingB.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\CallsFromAnotherClassA.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\CallsFromAnotherClassB.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\CallsFromAnotherClassC.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\EnumTest.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\MonoBasedClass.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\NotMonoBased.cs" />
+     <Compile Include="Assets\Benchy\Tests\Automated\CS\TestMethod.cs" />
+     <Compile Include="Assets\Benchy\Tests\Manual\CS\CSTest.cs" />
+     <Compile Include="Assets\Benchy\Tests\Manual\CS\ManualTestSharedCallsA.cs" />
+     <Compile Include="Assets\Benchy\Tests\Manual\CS\ManualTestSharedCallsB.cs" />
+     <Compile Include="Assets\Benchy\Tests\Manual\CS\ManualTestSharedCallsC.cs" />
+     <Compile Include="Assets\Benchy\Tests\Runtime\BenchmarkExample.cs" />
+     <Compile Include="Assets\Benchy\Tests\Runtime\OverviewExample.cs" />
+     <Compile Include="Assets\Enemies\Base_Enemy.cs" />
+     <Compile Include="Assets\Floating Bars\Floating_Bar.cs" />
      <Compile Include="Assets\Game_Control.cs" />
+     <Compile Include="Assets\Grids\Plane.cs" />
+     <Compile Include="Assets\RTS_Camera.cs" />
      <Compile Include="Assets\Spells\Base Classes\Base Projectile.cs" />
      <Compile Include="Assets\Spells\Base Classes\Base Spell.cs" />
+     <Compile Include="Assets\Spells\Fire Blast\Spell_Fire_Blast.cs" />
      <Compile Include="Assets\Spells\Fireball\Fireball_Projectile.cs" />
      <Compile Include="Assets\Spells\Fireball\Spell_Fireball.cs" />
+     <Compile Include="Assets\Towers\Arrow Tower\Arrow_Tower.cs" />
+     <Compile Include="Assets\Towers\Arrow Tower\RangeHelper.cs" />
+     <Compile Include="Assets\Towers\Base Class\Base_Tower.cs" />
+     <Compile Include="Assets\Towers\Fireball Tower\Fireball_Tower.cs" />
+     <Compile Include="Assets\test.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Benchy">
+ <HintPath>D:/Tower-Defense/Assets/Benchy/Benchy Util/Benchy.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Cecil">
+ <HintPath>D:/Tower-Defense/Assets/Benchy/BenchyProfiler/Mono.Cecil.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 public abstract class BaseSpell : MonoBehaviour {
 
+	public int id;
+	public int priority;
+
+	public GameObject MyCastBar;
+
 	public enum DamageType
 		{
 		Physical,
@@ -18,6 +23,7 @@ public abstract class BaseSpell : MonoBehaviour {
 
 	public Sprite Icon;
 	public GameObject ProjectileObject;
+	public GameObject CastParticles;
 
 	public int MinDamage;
 	public int MaxDamage;
@@ -36,11 +42,24 @@ public abstract class BaseSpell : MonoBehaviour {
 
 	public int Cost;
 
+	public float CastDone;
+
 	public abstract void OnHit ();
 	public abstract void OnCritical();
 	public abstract void DealDamage ();
+	public abstract void CastSpell();
 
 	private bool DidWeCritical;
+
+	public Base_Tower MyTower;
+
+	//Spell Ready Variables
+	public float nextAttack;
+
+	public bool IsReady()
+	{
+		return Time.time > nextAttack;
+	}
 
 	public void RollForCritial()
 	{
@@ -63,12 +82,15 @@ public abstract class BaseSpell : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
-		Debug.Log ("IN DESCRIPTION BASE");
 		description = "Deals " + MinDamage + "-" + MaxDamage + " " + Damage_Type + " damage to " + AllowedTargets + " enemies";
+		nextAttack = 0f;
 	}
 	
 	// Update is called once per frame
 	public void Update () {
-	
+		if (Time.time > CastDone && MyTower != null && CastTime > 0) {
+			MyTower.IsCasting = false;
+			nextAttack += .5f; //APPLY GCD AFTER SPELL HAS FINISHED
+				}
 	}
 }

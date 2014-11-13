@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Spell_Fireball : BaseSpell {
 
@@ -10,7 +11,24 @@ public class Spell_Fireball : BaseSpell {
 	
 	// Update is called once per frame
 	void Update () {
+		base.Update ();
+	}
 
+	public override void CastSpell()
+	{
+		nextAttack += CastTime;
+		nextAttack += AttackSpeed;
+		nextAttack += Cooldown;
+		if (CastTime > 0) {
+			CastDone = Time.time + CastTime + .5f;
+				} else {
+			CastDone = Time.time + 0.5f;		
+		}
+		MyCastBar.GetComponent<Slider> ().minValue = Time.time;
+		MyCastBar.GetComponent<Slider> ().maxValue = Time.time + CastTime + AttackSpeed;
+		MyCastBar.SetActive (true);
+		Debug.Log ("CASTING SPELL " + name);
+		MyTower.IsCasting = true;
 	}
 
 	public override void OnHit()
