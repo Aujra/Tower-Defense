@@ -20,14 +20,13 @@ public class Spell_Fireball : BaseSpell {
 		nextAttack += AttackSpeed;
 		nextAttack += Cooldown;
 		if (CastTime > 0) {
-			CastDone = Time.time + CastTime + .5f;
+			CastDone = Time.time + CastTime;
 				} else {
-			CastDone = Time.time + 0.5f;		
+			CastDone = Time.time;		
 		}
 		MyCastBar.GetComponent<Slider> ().minValue = Time.time;
 		MyCastBar.GetComponent<Slider> ().maxValue = Time.time + CastTime + AttackSpeed;
 		MyCastBar.SetActive (true);
-		Debug.Log ("CASTING SPELL " + name);
 		MyTower.IsCasting = true;
 	}
 

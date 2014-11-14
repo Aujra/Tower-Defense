@@ -27,6 +27,8 @@ public abstract class Base_Tower : MonoBehaviour {
 			tempSpell.GetComponent<BaseSpell>().MyTower = this;
 			Spells.Add(tempSpell);
 		}
+		//SORT BY PRIORITY IN ROTATION
+		Spells.Sort((spell1, spell2) => spell2.GetComponent<BaseSpell>().priority.CompareTo(spell1.GetComponent<BaseSpell>().priority));
 	}
 	
 	// Update is called once per frame

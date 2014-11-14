@@ -32,9 +32,9 @@ public abstract class BaseSpell : MonoBehaviour {
 	public int AllowedTargets;
 	public DamageType Damage_Type;
 
-	public int AttackSpeed;
-	public int CastTime;
-	public int Cooldown;
+	public float AttackSpeed;
+	public float CastTime;
+	public float Cooldown;
 	public List<GameObject> OnHitEffects = new List<GameObject>();
 	public List<GameObject> OnCriticalEffects = new List<GameObject>();
 
@@ -55,6 +55,8 @@ public abstract class BaseSpell : MonoBehaviour {
 
 	//Spell Ready Variables
 	public float nextAttack;
+
+	public bool OnGCD = true;
 
 	public bool IsReady()
 	{
@@ -88,9 +90,8 @@ public abstract class BaseSpell : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Update () {
-		if (Time.time > CastDone && MyTower != null && CastTime > 0) {
+		if (Time.time > (CastDone) && MyTower != null && CastTime > 0) {
 			MyTower.IsCasting = false;
-			nextAttack += .5f; //APPLY GCD AFTER SPELL HAS FINISHED
 				}
 	}
 }

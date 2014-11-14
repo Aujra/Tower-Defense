@@ -22,8 +22,7 @@ public class Spell_Fire_Blast : BaseSpell {
 		MyCastBar.GetComponent<Slider> ().minValue = Time.time;
 		MyCastBar.GetComponent<Slider> ().maxValue = Time.time + CastTime + AttackSpeed;
 		MyCastBar.SetActive (true);
-		CastDone = Time.time + .5f;
-		Debug.Log ("CASTING SPELL " + name);
+		CastDone = Time.time + 1f;
 	}
 	
 	public override void OnHit()
