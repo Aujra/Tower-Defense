@@ -38,4 +38,8 @@ public class Spell_Fire_Blast : BaseSpell {
 		
 	}
 
+	public override void FireProjectile()
+	{
+
+	}
 }

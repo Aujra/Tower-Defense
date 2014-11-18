@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class BaseSpell : MonoBehaviour {
+public class BaseSpell : MonoBehaviour {
 
 	public int id;
 	public int priority;
@@ -30,6 +30,7 @@ public abstract class BaseSpell : MonoBehaviour {
 	public int CritChance;
 	public float CritMultiplier;
 	public int AllowedTargets;
+	public GameObject Target;
 	public DamageType Damage_Type;
 
 	public float AttackSpeed;
@@ -44,11 +45,6 @@ public abstract class BaseSpell : MonoBehaviour {
 
 	public float CastDone;
 
-	public abstract void OnHit ();
-	public abstract void OnCritical();
-	public abstract void DealDamage ();
-	public abstract void CastSpell();
-
 	private bool DidWeCritical;
 
 	public Base_Tower MyTower;
@@ -57,6 +53,29 @@ public abstract class BaseSpell : MonoBehaviour {
 	public float nextAttack;
 
 	public bool OnGCD = true;
+
+	public virtual void OnHit ()
+	{
+
+	}
+	public virtual void OnCritical()
+	{
+
+	}
+	public virtual void DealDamage ()
+	{
+
+	}
+	public virtual void CastSpell()
+	{
+
+	}
+	public virtual void FireProjectile()
+	{
+		Debug.Log ("FIRING BASE PROJECTILE");
+		GameObject TempProjectile = Instantiate (ProjectileObject, MyTower.transform.position, Quaternion.identity) as GameObject;
+		TempProjectile.GetComponent<BaseProjectile> ().target = Target;
+	}
 
 	public bool IsReady()
 	{
@@ -90,8 +109,10 @@ public abstract class BaseSpell : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Update () {
-		if (Time.time > (CastDone) && MyTower != null && CastTime > 0) {
+		if (Time.time > (CastDone) && MyTower != null && CastTime > 0 && MyTower.IsCasting) {
 			MyTower.IsCasting = false;
+			Debug.Log ("FIRING PROJECTILE");
+			FireProjectile();
 				}
 	}
 }

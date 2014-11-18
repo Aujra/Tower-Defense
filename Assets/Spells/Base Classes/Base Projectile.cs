@@ -4,14 +4,16 @@ using System.Collections;
 public class BaseProjectile : MonoBehaviour {
 
 	public float speed;
+	public GameObject target;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 	
 	}
 	
 	// Update is called once per frame
 	public void Update () {
-		transform.Translate (Vector3.forward * Time.deltaTime * speed);
+		float step = speed * Time.deltaTime;
+		transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
 	}
 }

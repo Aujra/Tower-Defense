@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class Base_Tower : MonoBehaviour {
+public class Base_Tower : MonoBehaviour {
 
 	public List<GameObject> SpellList = new List<GameObject>();
 	public List<GameObject> Spells = new List<GameObject>();
@@ -40,14 +40,20 @@ public abstract class Base_Tower : MonoBehaviour {
 			{
 				if (spell.GetComponent<BaseSpell> ().IsReady () && !IsCasting) 
 				{
-					Debug.Log (spell.name + " IS READY  AM I CASTING " + IsCasting);
+					spell.GetComponent<BaseSpell>().Target = InRangeTargets[0].gameObject;
 					spell.GetComponent<BaseSpell>().CastSpell();
 				}
 			}
 		}
 	}
 
-	public abstract void Cast();
-	public abstract void DealDamage();
+	public virtual void Cast()
+	{
+
+	}
+	public virtual void DealDamage()
+	{
+
+	}
 
 }
